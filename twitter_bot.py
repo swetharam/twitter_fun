@@ -15,8 +15,9 @@ api=tweepy.API(auth)
 
 #actual code for simple twitter bot that read a file and updates the contents of the file as a tweet
 api=tweepy.API(auth)
-#the newtweet is a file which has the contents
-def retweets():
+#the newtweet is a file which has the contents and the function newtweets reads the file and tweets the contents of the file. If there
+#more than 140 characters it breaks them into multiple tweets accordingly.
+def newtweets():
     f= open("newtweet","r")
     filedata=f.readlines()
     f.close()
@@ -28,7 +29,7 @@ def retweets():
         else:
             break
 
-# retweets()
+newtweets()
 f=open("data","w")
 #searching twitter for a particular hashtag
 for tweet in tweepy.Cursor(api.search,q='#cartoons').items(1):
